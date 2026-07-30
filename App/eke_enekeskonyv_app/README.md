@@ -84,13 +84,7 @@ The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`.
 ## 🤝 Contributing
 
 Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. (Create a LICENSE file if needed)
-
+(no this is AI generated README I don't know how others can contribute LOL...)
 ---
 
 Developed with ❤️ for the EKE community.

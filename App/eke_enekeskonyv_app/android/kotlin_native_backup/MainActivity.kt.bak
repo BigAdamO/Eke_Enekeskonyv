@@ -1,0 +1,59 @@
+package com.nagyadam.eke_enekeskonyv_app
+
+import android.content.Context
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import com.nagyadam.eke_enekeskonyv_app.ui.loadJsonFromRaw
+import com.nagyadam.eke_enekeskonyv_app.ui.theme.EkeEnekeskonyvTheme
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import java.io.File
+
+var darkMode = false
+
+
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent{
+
+            val settings = loadSettingsFromFile(this@MainActivity)
+            darkMode = settings.darkMode
+            //var darkMode by remember { mutableStateOf(settings.darkMode) }
+
+            EkeEnekeskonyvTheme(darkTheme = darkMode){
+                SongbookApp()
+            }
+        }
+    }
+}
+
+@Serializable
+data class Settings(
+    var darkMode: Boolean,
+    var fontSize: Float
+)
+
+fun loadSettingsFromFile(context: Context): Settings {
+    val file = File(context.filesDir, "settings.json")
+    return if (file.exists()) {
+        val json = file.readText()
+        Json.decodeFromString<Settings>(json)
+    } else {
+        // Ha nincs fájl, akkor az R.raw.settings beolvasása
+        val defaultJson = loadJsonFromRaw(context, R.raw.settings)
+        val defaultSettings = Json.decodeFromString<Settings>(defaultJson)
+        saveSettingsToFile(context, defaultSettings)  // Elmentjük, hogy később már ezt használjuk
+        defaultSettings
+    }
+}
+
+fun saveSettingsToFile(context: Context, settings: Settings) {
+    val json = Json.encodeToString(settings)
+    val file = File(context.filesDir, "settings.json")
+    file.writeText(json)  // JSON fájl mentése a belső tárhelyre
+}

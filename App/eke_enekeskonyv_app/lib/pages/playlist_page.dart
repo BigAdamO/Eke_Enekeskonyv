@@ -20,14 +20,10 @@ class _PlaylistPageState extends State<PlaylistPage> {
 
     final id = int.tryParse(text);
     if (id != null && id >= 1 && id <= 463) {
-      if (_selectedIds.length < 10) {
-        setState(() {
-          _selectedIds.add(id);
-          _controller.clear();
-        });
-      } else {
-        _showError('Maximum 10 ének adható hozzá.');
-      }
+      setState(() {
+        _selectedIds.add(id);
+        _controller.clear();
+      });
     } else {
       _showError('Nincs ilyen számú ének! (1-463)');
       _controller.clear();
@@ -59,12 +55,17 @@ class _PlaylistPageState extends State<PlaylistPage> {
     final double fontSize = 18 * settings.fontSizeScale;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Ének lista')),
+      appBar: AppBar(
+        title: const Text('Ének lista')
+      ),
+
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
+
             const SizedBox(height: 20),
+
             TextField(
               controller: _controller,
               keyboardType: TextInputType.number,
@@ -75,17 +76,22 @@ class _PlaylistPageState extends State<PlaylistPage> {
               ),
               onSubmitted: (_) => _addSong(),
             ),
+
             const SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: _addSong,
               child: const Text('Felvesz'),
             ),
+
             const SizedBox(height: 30),
+
             Expanded(
               child: ListView.builder(
                 itemCount: _selectedIds.length,
                 itemBuilder: (context, index) {
                   final id = _selectedIds[index];
+
                   return Card(
                     margin: const EdgeInsets.only(bottom: 8),
                     color: Theme.of(context).colorScheme.secondaryContainer,
@@ -104,23 +110,30 @@ class _PlaylistPageState extends State<PlaylistPage> {
                 },
               ),
             ),
+
             const SizedBox(height: 20),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+
                 FloatingActionButton(
                   heroTag: 'clear',
                   onPressed: () => setState(() => _selectedIds.clear()),
                   backgroundColor: Colors.red[100],
                   child: const Icon(Icons.delete_sweep, color: Colors.red),
                 ),
+
                 FloatingActionButton(
                   heroTag: 'start',
                   onPressed: _startSinging,
                   child: const Icon(Icons.play_arrow),
                 ),
+
               ],
             ),
+
+            const SizedBox(height: 50),
           ],
         ),
       ),

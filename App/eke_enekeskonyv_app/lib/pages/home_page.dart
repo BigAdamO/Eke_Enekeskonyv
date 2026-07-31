@@ -15,14 +15,17 @@ class HomePage extends StatelessWidget {
     final double textSize = 24 * settings.fontSizeScale;
 
     return Scaffold(
+
       appBar: AppBar(
         title: const Text(
           'EKE Énekeskönyv',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
+
       body: Stack(
         children: [
+
           // Background Image
           Positioned.fill(
             child: Opacity(
@@ -33,13 +36,15 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // Content
+
+          // Content          
           Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 100),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+
                   Text(
                     'Üdvözöljük az új\nEKE Énekeskönyv\nalkalmazásban!',
                     textAlign: TextAlign.center,
@@ -49,9 +54,11 @@ class HomePage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+
                   const SizedBox(height: 40),
                   const Divider(thickness: 2, height: 40),
                   const SizedBox(height: 20),
+
                   _HomeButton(
                     text: 'Keresés',
                     icon: Icons.search,
@@ -60,7 +67,9 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const SearchPage()),
                     ),
                   ),
+
                   const SizedBox(height: 20),
+
                   _HomeButton(
                     text: 'Ének lista',
                     icon: Icons.playlist_add_check,
@@ -69,7 +78,9 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const PlaylistPage()),
                     ),
                   ),
+
                   const SizedBox(height: 20),
+                  
                   _HomeButton(
                     text: 'Tartalom',
                     icon: Icons.list_alt,
@@ -78,8 +89,10 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const SongListPage()),
                     ),
                   ),
+
                   const SizedBox(height: 40),
                   const Divider(thickness: 2, height: 40),
+
                   _HomeButton(
                     text: 'Beállítások',
                     icon: Icons.settings,
@@ -88,6 +101,7 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const SettingsPage()),
                     ),
                   ),
+
                 ],
               ),
             ),

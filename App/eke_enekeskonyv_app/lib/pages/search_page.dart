@@ -5,6 +5,7 @@ import '../services/song_service.dart';
 import 'song_view_page.dart';
 import 'song_list_page.dart';
 
+
 class SearchPage extends StatefulWidget {
   final bool initialSearchByNumber;
   const SearchPage({super.key, this.initialSearchByNumber = true});
@@ -63,7 +64,9 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
+
             const SizedBox(height: 40),
+
             TextField(
               controller: _controller,
               keyboardType: _searchByNumber ? TextInputType.number : TextInputType.text,
@@ -76,7 +79,9 @@ class _SearchPageState extends State<SearchPage> {
               ),
               onSubmitted: (_) => _handleSearch(),
             ),
+
             const SizedBox(height: 12),
+
             OutlinedButton(
               onPressed: () {
                 Navigator.pushReplacement(
@@ -93,13 +98,16 @@ class _SearchPageState extends State<SearchPage> {
                 _searchByNumber ? 'Keresés cím és szöveg alapján' : 'Keresés szám alapján',
               ),
             ),
+
             const SizedBox(height: 40),
+
             SizedBox(
               width: 200,
               height: 50,
               child: ElevatedButton(
                 onPressed: _handleSearch,
-                child: const Text('Keresés'),
+                child: 
+                  const Text('Keresés'),
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/song.dart';
+import '../providers/favorites_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/song_service.dart';
 
@@ -108,22 +109,37 @@ class _SongDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<SettingsProvider>(context);
-    
+    final favorites = Provider.of<FavoritesProvider>(context);
+    final isFavorite = favorites.isFavorite(song.id);
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
-            child: Center(
-              child: Text(
-                '${song.id} - ${song.title}',
-                style: TextStyle(
-                  fontSize: 22 * settings.fontSizeScale,
-                  fontWeight: FontWeight.bold,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Text(
+                    '${song.id} - ${song.title}',
+                    style: TextStyle(
+                      fontSize: 22 * settings.fontSizeScale,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
+                IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.redAccent : null,
+                    size: 28,
+                  ),
+                  onPressed: () => favorites.toggleFavorite(song.id),
+                ),
+              ],
             ),
           ),
           Padding(

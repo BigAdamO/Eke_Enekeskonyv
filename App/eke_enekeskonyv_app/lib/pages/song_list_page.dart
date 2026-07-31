@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/song.dart';
+import '../providers/favorites_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/song_service.dart';
 import 'song_view_page.dart';
@@ -14,6 +15,8 @@ class SongListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final settings = Provider.of<SettingsProvider>(context);
     final isSearching = searchQuery != null && searchQuery!.isNotEmpty;
+
+    final favorites = Provider.of<FavoritesProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -48,6 +51,8 @@ class SongListPage extends StatelessWidget {
             itemCount: songs.length,
             itemBuilder: (context, index) {
               final song = songs[index];
+              final isFavorite = favorites.isFavorite(song.id);
+
               return ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
                 title: Text(
@@ -57,6 +62,13 @@ class SongListPage extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                     decoration: TextDecoration.underline,
                   ),
+                ),
+                trailing: IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.redAccent : null,
+                  ),
+                  onPressed: () => favorites.toggleFavorite(song.id),
                 ),
                 onTap: () {
                   Navigator.push(

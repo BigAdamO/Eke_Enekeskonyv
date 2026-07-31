@@ -5,6 +5,7 @@ import 'search_page.dart';
 import 'settings_page.dart';
 import 'song_list_page.dart';
 import 'playlist_page.dart';
+import 'favorites_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -80,13 +81,24 @@ class HomePage extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 20),
-                  
+
                   _HomeButton(
                     text: 'Tartalom',
                     icon: Icons.list_alt,
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const SongListPage()),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  _HomeButton(
+                    text: 'Kedvencek',
+                    icon: Icons.favorite,
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const FavoritesPage()),
                     ),
                   ),
 

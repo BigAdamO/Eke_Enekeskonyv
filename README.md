@@ -86,3 +86,6 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 ---
 
 Developed with ❤️ for the EKE community.
+
+Android download: 
+https://drive.google.com/file/d/1uTaYeNfDMlbQhGEwoaKnJzoakSGaynbo/view?usp=sharing

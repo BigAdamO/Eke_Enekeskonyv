@@ -21,7 +21,7 @@
 ## 📱 Screenshots
 
 | Home Screen | Song View | Settings | Content |
-| :---: | :---: | :---: |
+| :---: | :---: | :---: | :---: |
 | ![Home](Data/homepage.jpg) | ![Song](Data/songview.jpg) | ![Song](Data/settings.jpg) | ![Song](Data/tartalom.jpg) |
 
 ---

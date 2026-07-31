@@ -20,11 +20,9 @@
 
 ## 📱 Screenshots
 
-| Home Screen | Song View | Search |
+| Home Screen | Song View | Settings |
 | :---: | :---: | :---: |
-| ![Home](assets/icon/mainpage_icon.png) | *Coming Soon* | *Coming Soon* |
-
-*(Note: Replace with actual screenshots for a better preview)*
+| ![Home](Data/homepage.jpg) | ![Song](Data/songview.jpg) | ![Song](Data/settings.jpg) |
 
 ---
 
@@ -84,12 +82,6 @@ The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`.
 ## 🤝 Contributing
 
 Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. (Create a LICENSE file if needed)
 
 ---
 
